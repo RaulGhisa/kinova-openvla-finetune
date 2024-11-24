@@ -1,4 +1,4 @@
-import random
+import logging
 import dm_env
 from dm_env import specs
 import numpy as np
@@ -9,16 +9,16 @@ from mock_node import ROSNode
 
 class Gen3LiteEnv(dm_env.Environment):
     def __init__(self, node: ROSNode, camera_device: VideoCaptureDevice):
-        # Initialize the ROS 2 Node
         self._node = node
         self._camera_device = camera_device
         self._instruction = "pick up a banana"  # pick one instruction for now
         self._step_count = 0
 
     def reset(self):
-        """ reset the environment state """
+        """ Resets the environment state. """
 
-        print("Resetting environment...")
+        logging.info("Resetting environment...")
+
         self._step_count = 0
         return dm_env.restart(
             self._get_observation_as_dict(),
@@ -42,12 +42,6 @@ class Gen3LiteEnv(dm_env.Environment):
                 'is_terminal': self._step_count >= 10,
                 'language_instruction': self._instruction,
             },
-            # 'info': {
-            #     'state': {
-            #         'episode_id': np.int64(0),  # You should track this
-            #         'step_count': np.int32(self._step_count),
-            #     }
-            # }
         }
 
         return observation
@@ -57,7 +51,7 @@ class Gen3LiteEnv(dm_env.Environment):
             Apply the action and update the environment state
             The action is delta motion.
         """
-        print(f"Taking action {action}...")
+        logging.info(f"Taking action {action}...")
 
         self._step_count += 1
         # perform action and wait for it to finish...
@@ -68,11 +62,12 @@ class Gen3LiteEnv(dm_env.Environment):
 
         if is_done:
             return dm_env.termination(reward, self._get_observation_as_dict())
-        # discount 0.0
-        return dm_env.transition(reward, self._get_observation_as_dict(), 0.0)
+        return dm_env.transition(reward, self._get_observation_as_dict())
 
     def action_spec(self):
-        # Should be 7 values (displacement of translation, rotation and gripper)
+        """ 
+            Should be 7 values: displacement of translation, rotation and gripper.
+        """
         return specs.Array(
             shape=(7,),
             dtype=np.float32,
@@ -82,9 +77,8 @@ class Gen3LiteEnv(dm_env.Environment):
     def observation_spec(self) -> dict[str, specs.Array]:
         """
             Returns the observation spec following RLDS standard.
-
-            The observation spec should be a nested dictionary where each leaf node
-            is a dm_env.specs. Array describing the shape and type of the observation.
+            The observation spec should be a nested dictionary where each leaf node is a dm_env.specs. Array describing the shape and type of the observation. 
+            Source: Claude.ai
         """
         return {
             'observation': {

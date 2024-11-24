@@ -1,0 +1,5 @@
+absl-py
+envlogger
+numpy
+tensorflow
+tensorflow_datasets

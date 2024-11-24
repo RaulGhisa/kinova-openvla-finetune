@@ -4,6 +4,11 @@ from dataclasses import dataclass
 
 @dataclass
 class EndEffectorState():
+    """
+        Models end-effector and gripper states. I believe OpenVLA expects an N-dim array with those two.
+        Gripper state is unkown...
+        More info here: https://github.com/moojink/rlds_dataset_builder/blob/4bfb8af6d4ca5c173703771d8ad3e2e0c980d525/LIBERO_Spatial/LIBERO_Spatial_dataset_builder.py#L116
+    """
     x: float
     y: float
     z: float
@@ -37,15 +42,28 @@ class ROSNode():
     """
 
     def _joint_callback(self, msg):
+        """
+            Updates the driver internal joint state from ROS messages.
+        """
         raise NotImplementedError
 
     def get_joint_and_eef_state(self) -> tuple[JointState, EndEffectorState]:
+        """ 
+            Returns both the joint and EEF states at the same time.
+            EEF state is computed from joints using forward kinematics, this ensures both values match perfectly. 
+        """
         raise NotImplementedError
 
     def _compute_end_effector_state_from_joints(self, joint_states):
+        """
+            Performs forward kinematics from joint state.
+        """
         raise NotImplementedError
 
     def perform_action(self, action) -> bool:
+        """"
+            Executes the action coming from Kinova arm driver.
+        """
         raise NotImplementedError
 
 
