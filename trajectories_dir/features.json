@@ -1,0 +1,183 @@
+{
+    "featuresDict": {
+        "features": {
+            "steps": {
+                "pythonClassName": "tensorflow_datasets.core.features.dataset_feature.Dataset",
+                "sequence": {
+                    "feature": {
+                        "featuresDict": {
+                            "features": {
+                                "action": {
+                                    "description": "Action.",
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "float64",
+                                        "encoding": "none",
+                                        "shape": {
+                                            "dimensions": [
+                                                "7"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "discount": {
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "float64",
+                                        "encoding": "none",
+                                        "shape": {}
+                                    }
+                                },
+                                "is_first": {
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "bool",
+                                        "encoding": "none",
+                                        "shape": {}
+                                    }
+                                },
+                                "is_last": {
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "bool",
+                                        "encoding": "none",
+                                        "shape": {}
+                                    }
+                                },
+                                "is_terminal": {
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "bool",
+                                        "encoding": "none",
+                                        "shape": {}
+                                    }
+                                },
+                                "observation": {
+                                    "featuresDict": {
+                                        "features": {
+                                            "observation": {
+                                                "featuresDict": {
+                                                    "features": {
+                                                        "image": {
+                                                            "description": "Main camera RGB observation.",
+                                                            "image": {
+                                                                "dtype": "uint8",
+                                                                "encodingFormat": "jpeg",
+                                                                "shape": {
+                                                                    "dimensions": [
+                                                                        "256",
+                                                                        "256",
+                                                                        "3"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "pythonClassName": "tensorflow_datasets.core.features.image_feature.Image"
+                                                        },
+                                                        "is_first": {
+                                                            "description": "True on first step of the episode.",
+                                                            "pythonClassName": "tensorflow_datasets.core.features.scalar.Scalar",
+                                                            "tensor": {
+                                                                "dtype": "bool",
+                                                                "encoding": "none",
+                                                                "shape": {}
+                                                            }
+                                                        },
+                                                        "is_last": {
+                                                            "description": "True on last step of the episode.",
+                                                            "pythonClassName": "tensorflow_datasets.core.features.scalar.Scalar",
+                                                            "tensor": {
+                                                                "dtype": "bool",
+                                                                "encoding": "none",
+                                                                "shape": {}
+                                                            }
+                                                        },
+                                                        "is_terminal": {
+                                                            "description": "True on last step of the episode if it is a terminal step, True for demos.",
+                                                            "pythonClassName": "tensorflow_datasets.core.features.scalar.Scalar",
+                                                            "tensor": {
+                                                                "dtype": "bool",
+                                                                "encoding": "none",
+                                                                "shape": {}
+                                                            }
+                                                        },
+                                                        "joint_state": {
+                                                            "description": "Robot joint angles.",
+                                                            "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                                            "tensor": {
+                                                                "dtype": "float32",
+                                                                "encoding": "none",
+                                                                "shape": {
+                                                                    "dimensions": [
+                                                                        "6"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "language_instruction": {
+                                                            "description": "Language Instruction.",
+                                                            "pythonClassName": "tensorflow_datasets.core.features.text_feature.Text",
+                                                            "text": {}
+                                                        },
+                                                        "state": {
+                                                            "description": "Robot EEF state (6D pose, 2D gripper).",
+                                                            "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                                            "tensor": {
+                                                                "dtype": "float32",
+                                                                "encoding": "none",
+                                                                "shape": {
+                                                                    "dimensions": [
+                                                                        "8"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "wrist_image": {
+                                                            "description": "Wrist camera RGB observation.",
+                                                            "image": {
+                                                                "dtype": "uint8",
+                                                                "encodingFormat": "jpeg",
+                                                                "shape": {
+                                                                    "dimensions": [
+                                                                        "256",
+                                                                        "256",
+                                                                        "3"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "pythonClassName": "tensorflow_datasets.core.features.image_feature.Image"
+                                                        }
+                                                    }
+                                                },
+                                                "pythonClassName": "tensorflow_datasets.core.features.features_dict.FeaturesDict"
+                                            }
+                                        }
+                                    },
+                                    "pythonClassName": "tensorflow_datasets.core.features.features_dict.FeaturesDict"
+                                },
+                                "reward": {
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "float64",
+                                        "encoding": "none",
+                                        "shape": {}
+                                    }
+                                },
+                                "timestamp": {
+                                    "pythonClassName": "tensorflow_datasets.core.features.tensor_feature.Tensor",
+                                    "tensor": {
+                                        "dtype": "float32",
+                                        "encoding": "none",
+                                        "shape": {}
+                                    }
+                                }
+                            }
+                        },
+                        "pythonClassName": "tensorflow_datasets.core.features.features_dict.FeaturesDict"
+                    },
+                    "length": "-1"
+                }
+            }
+        }
+    },
+    "pythonClassName": "tensorflow_datasets.core.features.features_dict.FeaturesDict"
+}
